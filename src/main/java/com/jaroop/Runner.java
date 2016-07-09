@@ -7,7 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by prakashwagle on 7/8/16.
+ * @author Created by prakashwagle on 7/8/16.
+ * This Class act as a controller between UserInterface and the backend Buissness Logic.
  */
 @Component
 public class Runner implements CommandLineRunner{
@@ -21,7 +22,6 @@ public class Runner implements CommandLineRunner{
     public void run(String... strings) throws Exception {
         String input = ui.getUserInput();
         StringBuilder output = webReader.getContent(input);
-        //parseContent(output);
         ui.putUserOutput(output.toString());
     }
 

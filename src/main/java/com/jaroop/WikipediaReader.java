@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Created by prakashwagle on 7/8/16.
+ * @author Created by prakashwagle on 7/8/16.
+ *This Class act as a entry point for JVM and  bootsup Spring Container
  */
 
 @SpringBootApplication

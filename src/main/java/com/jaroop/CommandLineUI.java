@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
 /**
- * Created by prakashwagle on 7/8/16.
+ * @author  Created by prakashwagle on 7/8/16.
  * This class implements IO methods to interact with user through command line interface
  */
 @Component
@@ -14,7 +14,7 @@ public class CommandLineUI implements UIO {
     /**
      * This method ask user to input topic he wants to search.
      * It replaces whitespace with "_"
-      * @return userInput [String] - Topic entered by user
+      * @return userInput - Topic entered by user
      */
     @Override
     public String getUserInput() {
@@ -27,10 +27,12 @@ public class CommandLineUI implements UIO {
 
     /**
      * This method prints the given input on commandline
-     * @param out [String]
+     * @param out
      */
     @Override
     public void putUserOutput(String out) {
+        System.out.println("/*************** OUTPUT **************/");
         System.out.println(out);
+        System.out.println("/*************** ###### **************/");
     }
 }

@@ -15,10 +15,20 @@ import java.net.URL;
 import java.net.URLConnection;
 
 /**
- * Created by prakashwagle on 7/8/16.
+ * @author Created by prakashwagle on 7/8/16.
+ *
+ * This class implements WebReader interface. Main function of this page is to get the User requestd page and
+ * return the content present in the body of a HTML page
  */
 @Component
 public class HTMLWebReader implements WebReader {
+
+    /**
+     * This methods override getConetent method of WebReader interface.
+     * It implemets functionality to get User requested content through HTML page.
+     * @param input : Topic requested by User
+     * @return result : Contains content of the requested HTML page.
+     */
     @Override
     public StringBuilder getContent(String input) {
         URL url;
@@ -41,7 +51,7 @@ public class HTMLWebReader implements WebReader {
 
             if (elements==null)
             {
-                System.out.println("Yo no page to Display Bro !!!");
+                result.append("Sorry...no Wikipedia Page is present for your input topic");
             }
             else
             {
@@ -53,13 +63,19 @@ public class HTMLWebReader implements WebReader {
              System.err.print(m);
         } catch (IOException e) {
             System.out.println("Page for the given Input: "+input+" cannot be found !!!");
-           // e.printStackTrace();
+           
         }
 
         return result;
     }
 
-
+    /**
+     * This method uses JSoup library to parse the HTML page for content
+     * It will parse for content between HTLM "<p>..</p> " tag
+     * @param sb : Input is a HTML page
+     * @return elements : Elements object which contains body of the content requested by user
+     * or if the search fails then it returns null.
+     */
     public Elements parseWebpage(StringBuilder sb)
     {
         Document document = Jsoup.parse(sb.toString());
@@ -68,6 +84,8 @@ public class HTMLWebReader implements WebReader {
         Element el = elements.stream().filter(x->x.text().matches("(?i).*may refer to:.*")).findAny().orElse(null);
         if (el!=null)
         {
+            Elements temp = element.getElementsByTag("ul");
+            temp.forEach(s-> System.out.println(s.text()));
            return null;
         }
         else {
