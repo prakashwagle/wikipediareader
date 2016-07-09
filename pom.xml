@@ -39,6 +39,15 @@
             <configuration>
                 <outputDirectory>../built</outputDirectory>
             </configuration>
+
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>2.10.4</version>
+            <configuration>
+                <outputDirectory>../javadocs</outputDirectory>
+            </configuration>
         </plugin>
     </plugins>
 </build>
