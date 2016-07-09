@@ -1,4 +1,4 @@
-package com.jaroop;
+package com.jaroop.Interface;
 
 /**
  * Created by prakashwagle on 7/8/16.

@@ -1,5 +1,10 @@
 package com.jaroop;
 
+import com.jaroop.Interface.WebReader;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -20,6 +25,7 @@ public class HTMLWebReader implements WebReader {
         URLConnection urlConnection;
         BufferedReader bufferedReader;
         String address = "https://en.wikipedia.org/wiki/"+input;
+        StringBuilder buffer= new StringBuilder();
         StringBuilder result= new StringBuilder();
 
         try {
@@ -29,16 +35,43 @@ public class HTMLWebReader implements WebReader {
             String temp;
             while ((temp=bufferedReader.readLine())!=null)
             {
-                result.append(temp);
+                buffer.append(temp);
+            }
+            Elements elements = parseWebpage(buffer);
+
+            if (elements==null)
+            {
+                System.out.println("Yo no page to Display Bro !!!");
+            }
+            else
+            {
+                elements.forEach(s -> result.append(s.text() +"\n"));
             }
         }
         catch (MalformedURLException m)
         {
              System.err.print(m);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Page for the given Input: "+input+" cannot be found !!!");
+           // e.printStackTrace();
         }
 
         return result;
+    }
+
+
+    public Elements parseWebpage(StringBuilder sb)
+    {
+        Document document = Jsoup.parse(sb.toString());
+        Element element = document.body();
+        Elements elements = element.getElementsByTag("p");
+        Element el = elements.stream().filter(x->x.text().matches("(?i).*may refer to:.*")).findAny().orElse(null);
+        if (el!=null)
+        {
+           return null;
+        }
+        else {
+           return elements;
+        }
     }
 }
