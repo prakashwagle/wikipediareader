@@ -1,4 +1,7 @@
 *.
 .idea
 WikipediaReader.iml
-target
+*.class
+*.lst
+*.original
+*.properties
