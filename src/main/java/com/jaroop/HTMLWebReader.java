@@ -63,7 +63,7 @@ public class HTMLWebReader implements WebReader {
              System.err.print(m);
         } catch (IOException e) {
             System.out.println("Page for the given Input: "+input+" cannot be found !!!");
-           
+
         }
 
         return result;
