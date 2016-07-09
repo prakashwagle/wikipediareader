@@ -81,15 +81,18 @@ public class HTMLWebReader implements WebReader {
         Document document = Jsoup.parse(sb.toString());
         Element element = document.body();
         Elements elements = element.getElementsByTag("p");
-        Element el = elements.stream().filter(x->x.text().matches("(?i).*may refer to:.*")).findAny().orElse(null);
-        if (el!=null)
-        {
-            Elements temp = element.getElementsByTag("ul");
-            temp.forEach(s-> System.out.println(s.text()));
-           return null;
+
+        if(elements.size()<=1) {
+            Element el = elements.stream().filter(x -> x.text().matches("(?i).*may refer to:.*")).findAny().orElse(null);
+            if (el != null) {
+                Elements temp = element.getElementsByTag("ul");
+//                System.out.println("YO");
+//                temp.forEach(s -> System.out.println(s.text()));
+                return null;
+            }
         }
-        else {
-           return elements;
-        }
+
+        return elements;
+
     }
 }
