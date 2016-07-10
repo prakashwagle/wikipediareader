@@ -8,7 +8,11 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author Created by prakashwagle on 7/8/16.
+ *
  * This Class act as a controller between UserInterface and the backend Buissness Logic.
+ * It Mainly Depends upon Two classes for execution
+ * UIO - This class handles User Input Output
+ * Webreader - This class handles Buissness logic of getting content requested by User through UIO metohds
  */
 @Component
 public class Runner implements CommandLineRunner{

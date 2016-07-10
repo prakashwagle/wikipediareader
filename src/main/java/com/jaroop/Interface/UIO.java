@@ -1,11 +1,12 @@
 package com.jaroop.Interface;
 
 /**
- * Created by prakashwagle on 7/8/16.
+ * @author Created by prakashwagle on 7/8/16.
+ * This is an interface which helps to create contract between consumer and the implementer of the given metohds
  */
 public interface UIO {
 
-    public String getUserInput();
-    public void putUserOutput(String out);
+    String getUserInput();
+    void putUserOutput(String out);
 
 }

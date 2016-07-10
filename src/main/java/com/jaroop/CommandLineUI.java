@@ -20,18 +20,33 @@ public class CommandLineUI implements UIO {
     public String getUserInput() {
 
         System.out.println("Please enter a topic of your interest : ");
-        Scanner sc = new Scanner(System.in);
-        String userInput = sc.nextLine().replaceAll("\\s","_");
+        Scanner sc ;
+        String line;
+        while (true)
+        {
+           sc = new Scanner(System.in);
+            line = sc.nextLine();
+        if (line.trim().isEmpty()) {
+            System.out.println("Please enter valid topic: ");
+        }
+            else
+        {
+            break;
+        }
+
+      }
+        String userInput = line.replaceAll("\\s","_");//sc.nextLine().replaceAll("\\s","_");
+//        System.out.println(userInput);
         return userInput;
     }
 
     /**
      * This method prints the given input on commandline
-     * @param out
+     * @param out : Prints the output on Users Console
      */
     @Override
     public void putUserOutput(String out) {
-        System.out.println("/*************** OUTPUT **************/");
+        System.out.println("/*************** Information **************/ \n");
         System.out.println(out);
         System.out.println("/*************** ###### **************/");
     }
