@@ -13,6 +13,10 @@ import org.springframework.stereotype.Component;
  * It Mainly Depends upon Two classes for execution
  * UIO - This class handles User Input Output
  * Webreader - This class handles Buissness logic of getting content requested by User through UIO metohds
+ *
+ * I have used Jsoup library in order to parse the HTML page as it gives out of the box methods in order to
+ * parse the DOM structure + It's OpenSource :)
+ *
  */
 @Component
 public class Runner implements CommandLineRunner{
